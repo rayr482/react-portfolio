@@ -25,7 +25,8 @@ export default function Contact() {
     event.preventDefault();
 
     if (!validateEmail(email) || !name) {
-      setError("Email or Username invalid!");
+      setError("Email or Name invalid!");
+      return;
     }
 
     if (!setMessage(message)) {
@@ -67,12 +68,12 @@ export default function Contact() {
               placeholder="Your Email"
             />
 
-            <label htmlFor="contact-message">Email:</label>
+            <label htmlFor="contact-message">Message:</label>
             <input
               value={message}
               name="message"
               onChange={handleInputChange}
-              type="text"
+              type="message"
               id="contact-message"
               placeholder="Your Message"
             />
