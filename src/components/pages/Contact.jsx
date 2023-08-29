@@ -1,20 +1,93 @@
+import { validateEmail } from "../../utils/helpers";
+import { useState } from 'react'
+
 export default function Contact() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleInputChange = (event) => {
+    const { target } = event;
+    const inputType = target.name;
+    const inputValue = target.value;
+
+    if (inputType === "email") {
+      setEmail(inputValue);
+    } else if (inputType === "name") {
+      setName(inputValue);
+    } else {
+      setMessage(inputValue);
+    }
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (!validateEmail(email) || !name) {
+      setError("Email or Username invalid!");
+    }
+
+    if (!setMessage(message)) {
+      setError("Message is required!");
+      return;
+    }
+
+    setEmail("");
+    setName("");
+    setMessage("");
+  };
+
   return (
-    <div>
-      <h1>Contact Me</h1>
-      <p>
-        Integer cursus bibendum sem non pretium. Vestibulum in aliquet sem, quis
-        molestie urna. Aliquam semper ultrices varius. Aliquam faucibus sit amet
-        magna a ultrices. Aenean pellentesque placerat lacus imperdiet
-        efficitur. In felis nisl, luctus non ante euismod, tincidunt bibendum
-        mi. In a molestie nisl, eu sodales diam. Nam tincidunt lacus quis magna
-        posuere, eget tristique dui dapibus. Maecenas fermentum elementum
-        faucibus. Quisque nec metus vestibulum, egestas massa eu, sollicitudin
-        ipsum. Nulla facilisi. Sed ut erat ligula. Nam tincidunt nunc in nibh
-        dictum ullamcorper. Class aptent taciti sociosqu ad litora torquent per
-        conubia nostra, per inceptos himenaeos. Etiam ornare rutrum felis at
-        rhoncus. Etiam vel condimentum magna, quis tempor nulla.
-      </p>
-    </div>
+    <section className="contact">
+      <div className="flex-row">
+        <h2>Contact</h2>
+      </div>
+
+      <div className="contact-form">
+        <div>
+          <form className="form">
+            <label htmlFor="contact-name">Name:</label>
+            <input
+              value={name}
+              name="name"
+              onChange={handleInputChange}
+              type="text"
+              id="contact-name"
+              placeholder="Your Name"
+            />
+
+            <label htmlFor="contact-email">Email:</label>
+            <input
+              value={email}
+              name="email"
+              onChange={handleInputChange}
+              type="email"
+              id="contact-email"
+              placeholder="Your Email"
+            />
+
+            <label htmlFor="contact-message">Email:</label>
+            <input
+              value={message}
+              name="message"
+              onChange={handleInputChange}
+              type="text"
+              id="contact-message"
+              placeholder="Your Message"
+            />
+
+            <button type="button" onClick={handleFormSubmit}>
+              Submit
+            </button>
+          </form>
+        </div>
+        {error && (
+          <div>
+            <p className="error-message">{error}</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

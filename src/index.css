@@ -1,11 +1,13 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #242424; */
+
+  --primary: #3c7a89;
+  --secondary: #2e4759;
+  --dark: #16262e;
+  --light: #dbc2cf;
+  --cool: #9fa2b2;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,14 +18,18 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--dark);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--primary);
 }
 
 body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: var(--secondary);
   margin: 0;
   display: flex;
   place-items: center;
@@ -31,9 +37,136 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+header {
+  padding: 130px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-image: url('../src/assets/images/img_elden-ring.jpg');
+  background-size: cover;
+  background-position-y: bottom;
+}
+
+header h1 {
+  font-size: 40px;
+  color: var(--light);
+  text-shadow: 0 0 10px var(--dark);
+}
+
+header nav{
+  margin: 10px 0;
+}
+
+header nav ul, ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+header nav ul li a {
+  padding: 20px;
+  font-weight: normal;
+  font-size: 30px;
+  color: var(--light);
+  text-shadow: 0 0 10px var(--dark);
+  border-radius: 15px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: var(--primary)
+}
+
+.about p {
+  font-size: 20px;
+  padding: 0 20px;
+  line-height: 1.5;
+  width: 90%;
+  color: var(--light)
+}
+
+.about-content {
+  text-align: start;
+}
+
+.contact h2 {
+  color: var(--primary);
+}
+
+.contact-form {
+  padding: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 1px solid var(--dark);
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  color: var(--primary);
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: var(--light);
+}
+
+.contact-form button {
+  width: 100%;
+  background-color: var(--primary);
+  padding: 10px;
+}
+
+.portfolio {
+  font-size: 36px;
+  color: var(--primary);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card-content {
+  margin: 20px auto;
+}
+
+.card-title {
+  font-size: 24px;
+  color: var(--light)
+}
+
+.card-img {
+  opacity: 0.5;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.card-img:hover {
+  opacity: 1.0;
+  transform: scale(0.99);
 }
 
 button {
@@ -47,23 +180,45 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+.resume {
+  color: var(--primary);
 }
+
+.resume p {
+  color: var(--light);
+}
+
+footer {
+  margin-top: 10%;
+  background-color: var(--cool);
+  width: 100%;
+  height: 125px;
+}
+
+footer a:hover {
+  opacity: 0.5;
+  color: var(--primary);
+}
+
+.logo {
+  list-style: none;
+  font-size: 30px;
+  color: var(--dark);
+  display: inline-block;
+}
+
+button:hover {
+  border-color: var(--dark);
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
   a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+    color: var(--primary);
   }
 }
